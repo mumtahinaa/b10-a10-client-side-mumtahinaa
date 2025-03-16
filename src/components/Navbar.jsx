@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Logo from "./Logo";
+import { AuthContext } from "../Utility/AuthProvider";
 
-const Navbar = ({ user, logOut }) => {
+const Navbar = () => {
 //   const [theme, setTheme] = useState("light");
 
 //   const toggleTheme = () => {
@@ -11,6 +12,8 @@ const Navbar = ({ user, logOut }) => {
 //     setTheme(newTheme);
 //     document.documentElement.setAttribute("data-theme", newTheme);
 //   };
+const {user,logOut} = useContext(AuthContext);
+console.log(user)
 
   return (
     <div className="mx-auto w-full bg-black">
@@ -59,12 +62,12 @@ const Navbar = ({ user, logOut }) => {
       {/* Navbar End */}
       <div className="navbar-end w-5/6 md:w-5/6 flex items-center gap-3 md:gap-4">
         {/* User Profile */}
-        {user && user?.email ? (
-          <div className="tooltip" data-tip={user.email}>
-            <img className="w-8 md:w-10 h-8 md:h-10 rounded-full hidden sm:block" src={user.photoURL} alt="User" />
+        {user && user?.email && user?.photoURL ? (
+          <div className="tooltip tooltip-bottom  text-gray-400" data-tip={user?.email}>
+            <img className="w-8 md:w-10 h-8 md:h-10 rounded-full hidden sm:block" src={user?.photoURL} alt="User" />
           </div>
         ) : (
-          <FaRegUserCircle className="text-[#00A8E8] w-8 md:w-10 h-8 md:h-10 hidden sm:block" />
+          <div className="tooltip tooltip-bottom pt-0 mt-0 gap-0 text-gray-400" data-tip={user?.email}><FaRegUserCircle className="text-[#00A8E8] w-8 md:w-10 h-8 md:h-10 hidden sm:block" /></div>
         )}
 
         {/* Auth Buttons */}

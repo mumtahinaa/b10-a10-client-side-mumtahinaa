@@ -1,17 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaEye,FaEyeSlash } from "react-icons/fa6";
+import { AuthContext } from "../Utility/AuthProvider";
 
 const LogIn = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const {googleSignIn,setUser,user,signIn}= useContext(AuthContext);
+  const [error,setError]= useState('');
     const [showPass,setShowPass] = useState(false);
+   
     const navigate = useNavigate();
-    // const provider = new GoogleAuthProvider();
+   
   
-    const handleLogin = async (e) => {
+    const handleLogin = (e) => {
       e.preventDefault();
+      const email = e.target.email.value;
+      const  password = e.target.password.value;
+      // console.log(email,password)
+      setError('');
+     
+      signIn(email,password)
+      .then(result=>{
+        const userInfo = result.user;
+        console.log(userInfo)
+        setUser(userInfo);
+      })
+      .catch((err)=>{
+        const errCode = err.code;
+        setError(errCode);
+      })
+
 
     //   try {
     //     await signInWithEmailAndPassword(auth, email, password);
@@ -23,7 +41,15 @@ const LogIn = () => {
       
     };
   
-    const handleGoogleLogin = async () => {
+    const handleGoogleLogin = () => {
+      googleSignIn()
+      .then(result=>{
+        const clientInfo = result.user;
+        console.log(clientInfo)
+        setUser(clientInfo)
+      });
+
+
         // try {
         //     await signInWithPopup(auth, provider);
         //     toast.success("Google Login Successful!");
@@ -71,6 +97,9 @@ const LogIn = () => {
               Forgot Password?
             </Link>
           </div>
+          {
+            error && <small className="text-red-500">{error}</small>
+          }
             <button type="submit" className="btn w-full bg-[#9B5DE5] hover:bg-[#00A8E8] text-white">
               Login
             </button>
