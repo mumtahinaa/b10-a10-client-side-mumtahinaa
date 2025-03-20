@@ -38,7 +38,7 @@ const AllMovies = () => {
               <p className="text-white text-sm">Release Year: {movie.releaseYear}</p>
               <p className="text-yellow-400 text-sm font-bold">Rating: {movie.rating}</p>
               <button
-                onClick={() => navigate(`/movie/${movie.id}`)}
+                onClick={() => navigate(`/movie-details/${movie._id}`)}
                 className="mt-4 w-full py-2 bg-[#00A8E8] text-black font-bold rounded-lg shadow-md transition hover:bg-[#9B5DE5] hover:text-white"
               >
                 See Details
