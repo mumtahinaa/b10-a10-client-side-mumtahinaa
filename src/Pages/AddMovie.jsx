@@ -108,13 +108,13 @@ const AddMovie = () => {
               {...register("genre", { required: "Select a genre" })}
             >
               <option className="text-black" value="">Select Genre</option>
-              <option className="text-black"  value="comedy">Comedy</option>
-              <option className="text-black"  value="comedy">Sci-fi</option>
-              <option className="text-black" value="drama">Drama</option>
-              <option className="text-black" value="horror">Horror</option>
-              <option className="text-black" value="action">Action</option>
-              <option className="text-black" value="romance">Animation</option>
-              <option className="text-black" value="romance">Romance</option>
+              <option className="text-black"  value="Comedy">Comedy</option>
+              <option className="text-black"  value="Sci-fi">Sci-fi</option>
+              <option className="text-black" value="Drama">Drama</option>
+              <option className="text-black" value="Horror">Horror</option>
+              <option className="text-black" value="Action">Action</option>
+              <option className="text-black" value="Animation">Animation</option>
+              <option className="text-black" value="Romance">Romance</option>
             </select>
             {errors.genre && <p className="text-red-500 text-sm">{errors.genre.message}</p>}
           </div>
@@ -142,7 +142,7 @@ const AddMovie = () => {
               {...register("releaseYear", { required: "Select a release year" })}
             >
               <option className="text-black"  value="">Select Year</option>
-              <option className="text-black" value="2024">2025</option>
+              <option className="text-black" value="2025">2025</option>
               <option className="text-black" value="2024">2024</option>
               <option className="text-black" value="2023">2023</option>
               <option className="text-black" value="2022">2022</option>

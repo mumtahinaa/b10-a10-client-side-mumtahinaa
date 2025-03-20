@@ -17,7 +17,7 @@ const MovieDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         const filteredMovies = data.filter((m) => m._id !== movie._id);
-        setSuggestedMovies(filteredMovies.slice(0, 4)); 
+        setSuggestedMovies(filteredMovies.slice(0, 5)); 
       });
   }, [movie]);
 
@@ -38,7 +38,7 @@ const MovieDetails = () => {
   
             {/* Rating Stars */}
             <div className="mt-4 flex items-center gap-2">
-              <Rating initialValue={movie.rating} readonly size={25} fillColor="#9B5DE5" className='rating-container' />
+              <Rating initialValue={movie.rating} readonly size={25}  className='rating-container' />
               <span className="text-lg">{movie.rating} / 5</span>
             </div>
   
