@@ -137,7 +137,7 @@ const MovieDetails = () => {
                 Add to Favorite
               </button>
               <button
-                 onClick={handleFavorite}
+                 onClick={()=>navigate(`/update-movie/${movie._id}`)}
                 className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 bg-[#00A8E8] hover:bg-[#9B5DE5] text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
               >
                 Update Movie

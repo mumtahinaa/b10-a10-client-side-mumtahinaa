@@ -28,7 +28,7 @@ const AddMovie = () => {
       return;
     }
 
-    const movieData = { ...data, rating, userEmail: user.email };
+    const movieData = { ...data, rating, userEmail: user?.email };
     console.log("Movie Added:", movieData);
 
     fetch("http://localhost:4000/movies",{
