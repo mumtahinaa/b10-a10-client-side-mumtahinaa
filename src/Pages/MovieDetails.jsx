@@ -11,6 +11,7 @@ const MovieDetails = () => {
    const {user} = useContext(AuthContext);
    console.log(user)
    const movie = useLoaderData();
+   
 
    console.log(movie);
    const [suggestedMovies, setSuggestedMovies] = useState([]);
@@ -122,19 +123,26 @@ const MovieDetails = () => {
             <p className="mt-4 text-gray-300 text-lg">{movie.summary}</p>
   
             {/* Action Buttons */}
-            <div className="mt-6 flex gap-4">
+            <div className="mt-6 flex flex-wrap gap-4 justify-center sm:justify-start">
               <button
                 onClick={()=>handleDelete(movie._id)}
-                className="w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
+                className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 bg-red-600 hover:bg-red-800 text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
               >
                 Delete Movie
               </button>
               <button
                  onClick={handleFavorite}
-                className="w-full bg-[#9B5DE5] hover:bg-[#00A8E8] text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
+                className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 bg-[#9B5DE5] hover:bg-[#00A8E8] text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
               >
                 Add to Favorite
               </button>
+              <button
+                 onClick={handleFavorite}
+                className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 bg-[#00A8E8] hover:bg-[#9B5DE5] text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
+              >
+                Update Movie
+              </button>
+            
             </div>
           </div>
   
@@ -146,7 +154,7 @@ const MovieDetails = () => {
                 <div
                   key={suggested._id}
                   className="flex items-center gap-4 cursor-pointer hover:bg-[#333] p-2 rounded-lg transition"
-                  onClick={() => navigate(`/movies/${suggested._id}`)}
+                  onClick={() => navigate(`/movie-details/${suggested._id}`)}
                 >
                   <img src={suggested.poster} alt={suggested.title} className="w-16 h-24 rounded-md shadow" />
                   <div>
