@@ -21,7 +21,9 @@ const MovieDetails = () => {
       });
   }, [movie]);
 
-   
+   const handleDelete =()=>{
+    
+   }
 
 
     return (
@@ -48,7 +50,7 @@ const MovieDetails = () => {
             {/* Action Buttons */}
             <div className="mt-6 flex gap-4">
               <button
-                // onClick={handleDelete}
+                onClick={handleDelete}
                 className="w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
               >
                 Delete Movie
