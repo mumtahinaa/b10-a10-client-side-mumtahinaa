@@ -6,3 +6,7 @@
 a.active{
   color: #00A8E8;
 }
+.rating-container svg {
+    display: inline-block !important;
+    vertical-align: middle !important;
+}

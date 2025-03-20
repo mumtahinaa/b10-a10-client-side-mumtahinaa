@@ -16,7 +16,7 @@ const {user,logOut} = useContext(AuthContext);
 console.log(user)
 
   return (
-    <div className="mx-auto w-full bg-black">
+    <div className="mx-auto w-full bg-black ">
     <div className="navbar shadow-lg px-4 md:px-6 xl:w-11/12 lg:w-full md:w-full sm:w-full mx-auto">
       {/* Navbar Start */}
       <div className="navbar-start w-auto md:w-1/6 flex items-center">
