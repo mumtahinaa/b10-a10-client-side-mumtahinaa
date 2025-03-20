@@ -1,22 +1,12 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-const movies = [
-  {
-    poster: "https://via.placeholder.com/200", // Replace with actual image URL
-    title: "Cyber Rebellion",
-    genre: "Sci-Fi, Action",
-    duration: "120",
-    releaseYear: 2025,
-    rating: "4.5/5",
-    id: 1,
-  },
-  // Add more movie objects here
-];
+
 
 const AllMovies = () => {
   const navigate = useNavigate();
   const movies = useLoaderData();
+   
 
   return (
    <div className=" bg-black mx-auto">

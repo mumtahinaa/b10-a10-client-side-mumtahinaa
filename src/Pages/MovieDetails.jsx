@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { Rating } from "react-simple-star-rating";
+import Swal from 'sweetalert2';
+import  { AuthContext } from '../Utility/AuthProvider';
 
 
 
 const MovieDetails = () => {
   
-
+   const {user} = useContext(AuthContext);
+   console.log(user)
    const movie = useLoaderData();
 
    console.log(movie);
    const [suggestedMovies, setSuggestedMovies] = useState([]);
+//    const [afterDelete,setAfterDelete]= useState()
+   const navigate = useNavigate();
+ 
 
    useEffect(() => {
     fetch("http://localhost:4000/movies")
@@ -21,9 +27,77 @@ const MovieDetails = () => {
       });
   }, [movie]);
 
-   const handleDelete =()=>{
-    
+   const handleDelete =(_id)=>{
+
+    console.log("delete",_id)
+    Swal.fire({
+        title: "Are you sure?",
+        text: "This movie will be deleted permanently!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#9B5DE5",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(result =>{
+        if( result.isConfirmed){
+            fetch(`http://localhost:4000/movies/${_id}`,{
+                method:"DELETE"
+            })
+            .then(res=>res.json())
+            .then(data =>{
+                console.log(data)
+                if(data.deletedCount){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your movie has been deleted.",
+                        icon: "success"
+                      });
+                      navigate('/movies');
+                }
+               
+            
+            })
+
+        }
+      })
+   
+
    }
+
+
+   const handleFavorite  =()=>{
+    const favoriteData ={
+        Poster:movie.poster,
+        Title:movie.title,
+        Genre:movie.genre,
+        Duration:movie.duration,
+        ReleaseYear:movie.releaseYear,
+        Rating:movie.rating,
+        User:user.email
+
+    }
+
+    console.log(favoriteData)
+
+    fetch("http://localhost:4000/favorite",{
+        method:"POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(favoriteData)
+    }).then(res=>res.json())
+    .then(result=>
+       {
+        if(result.insertedId){
+            Swal.fire("Added!", "Movie added to favorites!", "success");
+            console.log(result)
+        }
+       }
+       
+    )
+   }
+
+
 
 
     return (
@@ -50,13 +124,13 @@ const MovieDetails = () => {
             {/* Action Buttons */}
             <div className="mt-6 flex gap-4">
               <button
-                onClick={handleDelete}
+                onClick={()=>handleDelete(movie._id)}
                 className="w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
               >
                 Delete Movie
               </button>
               <button
-                // onClick={handleAddToFavorites}
+                 onClick={handleFavorite}
                 className="w-full bg-[#9B5DE5] hover:bg-[#00A8E8] text-white font-bold py-2 rounded-lg transition-transform transform hover:scale-105"
               >
                 Add to Favorite
