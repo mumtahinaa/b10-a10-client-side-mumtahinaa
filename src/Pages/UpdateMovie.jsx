@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { AuthContext } from "../Utility/AuthProvider";
 import Swal from "sweetalert2";
 
 const UpdateMovie = () => {
   const { user } = useContext(AuthContext);
-  const { id } = useParams();
+  const movie = useLoaderData();
+  const {_id} = movie;
   const navigate = useNavigate();
   const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
   const [rating, setRating] = useState(0);
@@ -31,6 +32,29 @@ const UpdateMovie = () => {
     }
 
     const updatedMovie = { ...data, rating, userEmail: user?.email };
+
+    fetch(`http://localhost:4000/movies/${_id}`,{
+           method: 'PUT',
+           headers: {
+               'content-type': 'application/json'
+           },
+           body: JSON.stringify(updatedMovie)
+       })
+       .then(res=>res.json())
+       .then(data =>{
+           console.log(data)
+           if(data.){
+               Swal.fire({
+                   title:'Success!',
+                   text: "Movie added successfully",
+                   icon: "success",
+                  confirmButtonText: 'Ok'
+                 });
+               reset();
+               setRating(0);
+               setValue("rating", 0); // Explicitly reset rating in form
+           }
+       })
 
    
  
