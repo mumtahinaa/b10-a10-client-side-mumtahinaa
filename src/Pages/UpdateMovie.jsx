@@ -43,10 +43,10 @@ const UpdateMovie = () => {
        .then(res=>res.json())
        .then(data =>{
            console.log(data)
-           if(data.){
+           if(data.modifiedCount){
                Swal.fire({
                    title:'Success!',
-                   text: "Movie added successfully",
+                   text: "Movie updated successfully",
                    icon: "success",
                   confirmButtonText: 'Ok'
                  });

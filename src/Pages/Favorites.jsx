@@ -65,7 +65,7 @@ const Favorites = () => {
                 <img
                   src={movie.Poster}
                   alt={movie.Title}
-                  className="w-full h-64 object-cover rounded-md mb-4"
+                  className="w-full h-64 object-fill rounded-md mb-4"
                 />
                 <h3 className="text-xl font-bold text-[#9B5DE5]">{movie.Title}</h3>
                 <p className="text-gray-400">{movie.Genre} | {movie.Duration} mins | {movie.ReleaseYear}</p>
