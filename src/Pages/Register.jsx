@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { auth, googleProvider } from "../firebaseConfig"; // Ensure Firebase is configured
 // import { createUserWithEmailAndPassword, updateProfile, signInWithPopup } from "firebase/auth";
 // import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ const Register = () => {
 const {register,setUser,user,googleSignIn}= useContext(AuthContext)
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
 
 
@@ -52,6 +53,7 @@ const {register,setUser,user,googleSignIn}= useContext(AuthContext)
       const infoClient = result.user
       console.log(infoClient)
       setUser(infoClient);
+      navigate('/');
     })
     .catch((err)=>{
       const errMessage = err.message;
@@ -83,6 +85,8 @@ const {register,setUser,user,googleSignIn}= useContext(AuthContext)
       const clientInfo = result.user;
       console.log(clientInfo)
       setUser(clientInfo)
+      navigate(location?.state ? location?.state : '/');
+
     })
   }
 //   const handleGoogleSignIn = async () => {

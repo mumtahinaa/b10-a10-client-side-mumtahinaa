@@ -38,7 +38,7 @@ console.log(user)
             <NavLink to="/movies" className="text-[#9B5DE5] hover:text-[#00A8E8]">All Movies</NavLink>
             <NavLink to="/add-movie" className="text-[#9B5DE5] hover:text-[#00A8E8]">Add Movie</NavLink>
             <NavLink to="/favorites" className="text-[#9B5DE5] hover:text-[#00A8E8]">My Favorites</NavLink>
-            <NavLink to="/contact" className="text-[#9B5DE5] hover:text-[#00A8E8]">Contact Us</NavLink>
+            <NavLink to="/tv-shows" className="text-[#9B5DE5] hover:text-[#00A8E8]">Tv Shows</NavLink>
           </ul>
         </div>
         {/* Logo */}
@@ -55,7 +55,7 @@ console.log(user)
           <NavLink to="/movies" className="text-sm md:text-base font-medium text-[#9B5DE5] hover:text-[#00A8E8]">All Movies</NavLink>
           <NavLink to="/add-movie" className="text-sm md:text-base font-medium text-[#9B5DE5] hover:text-[#00A8E8]">Add Movie</NavLink>
           <NavLink to="/favorites" className="text-sm md:text-base font-medium text-[#9B5DE5] hover:text-[#00A8E8]">My Favorites</NavLink>
-          <NavLink to="/contact" className="text-sm md:text-base font-medium text-[#9B5DE5] hover:text-[#00A8E8]">Contact Us</NavLink>
+          <NavLink to="/tv-shows" className="text-sm md:text-base font-medium text-[#9B5DE5] hover:text-[#00A8E8]">Tv Shows</NavLink>
         </ul>
       </div>
 
@@ -72,14 +72,14 @@ console.log(user)
 
         {/* Auth Buttons */}
         {user ? (
-          <button onClick={logOut} className="btn btn-xs md:btn-md bg-[#9B5DE5] text-white hover:bg-[#00A8E8]">Log Out</button>
+          <button onClick={logOut} className="btn btn-sm md:btn-md bg-[#9B5DE5] text-white hover:bg-[#00A8E8]">Log Out</button>
         ) : (
           <>
             <Link to="/login">
-              <button className="btn btn-xs md:btn-md bg-[#00A8E8] text-white hover:bg-[#9B5DE5]">Login</button>
+              <button className="btn btn-sm md:btn-md bg-[#00A8E8] text-white hover:bg-[#9B5DE5]">Login</button>
             </Link>
             <Link to="/register">
-              <button className="btn btn-xs md:btn-md bg-[#9B5DE5] text-white hover:bg-[#00A8E8]">Register</button>
+              <button className="btn btn-sm md:btn-md bg-[#9B5DE5] text-white hover:bg-[#00A8E8]">Register</button>
             </Link>
           </>
         )}

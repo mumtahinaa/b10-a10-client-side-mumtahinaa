@@ -1,14 +1,22 @@
 import React from 'react';
-import Banner from '../components/Banner';
+// import Banner from '../components/Banner';
 import Featured from '../components/Featured';
-import { useLoaderData } from 'react-router-dom';
+import Banner2 from '../components/banner2/banner2';
+import Latest from '../components/Latest';
+import TvSeries from '../components/TvSeries';
+
+
+
+
 
 const Home = () => {
     
     return (
         <div>
-           <Banner></Banner> 
+           <Banner2></Banner2>
            <Featured ></Featured>
+           <Latest></Latest>
+           <TvSeries></TvSeries>
            
 
         </div>

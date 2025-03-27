@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaEye,FaEyeSlash } from "react-icons/fa6";
 import { AuthContext } from "../Utility/AuthProvider";
@@ -8,7 +8,7 @@ const LogIn = () => {
   const {googleSignIn,setUser,user,signIn}= useContext(AuthContext);
   const [error,setError]= useState('');
     const [showPass,setShowPass] = useState(false);
-   
+   const location = useLocation();
     const navigate = useNavigate();
    
   
@@ -24,6 +24,7 @@ const LogIn = () => {
         const userInfo = result.user;
         console.log(userInfo)
         setUser(userInfo);
+        navigate(location?.state ? location?.state : '/');
       })
       .catch((err)=>{
         const errCode = err.code;
@@ -47,6 +48,7 @@ const LogIn = () => {
         const clientInfo = result.user;
         console.log(clientInfo)
         setUser(clientInfo)
+        navigate(location?.state ? location?.state : '/');
       });
 
 

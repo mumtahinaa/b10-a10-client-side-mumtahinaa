@@ -8,11 +8,18 @@ import AddMovie from "../Pages/AddMovie";
 import Favorites from "../Pages/Favorites";
 import MovieDetails from "../Pages/MovieDetails";
 import UpdateMovie from "../Pages/UpdateMovie";
+import TvShows from "../Pages/TvShows";
+import TvDetail from "../Pages/TvDetail";
+import ErrorPage from "../components/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
+
+
 
 const router = createBrowserRouter([
     {
         path:'/',
         element:<MainLayout></MainLayout>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                  path:'/',
@@ -25,21 +32,33 @@ const router = createBrowserRouter([
             },
             {
                 path:"/add-movie",
-                element:<AddMovie></AddMovie>,
+                element:<PrivateRoute><AddMovie></AddMovie></PrivateRoute>,
             },
             {
                 path:"/favorites",
-                element:<Favorites></Favorites>,
+                element:<PrivateRoute><Favorites></Favorites></PrivateRoute>,
+            },
+            {
+               path:"/tv-shows",
+               element:  <TvShows></TvShows>,  
+               loader:()=> fetch("http://localhost:4000/tv-shows")      
             },
             {
                 path:"/movie-details/:id",
-                element:<MovieDetails></MovieDetails>,
+                element:<PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
                 loader:({params})=> fetch(`http://localhost:4000/movies/${params.id}`)
             },
             {
                 path:"/update-movie/:id",
                 element:<UpdateMovie></UpdateMovie>,
                 loader:({params})=> fetch(`http://localhost:4000/movies/${params.id}`)
+
+            },
+            {
+                path:"/tvshow-details/:id",
+                element:<PrivateRoute><TvDetail></TvDetail></PrivateRoute>,
+                loader:({params})=>fetch(`http://localhost:4000/tv-shows/${params.id}`)
+
 
             },
             {
