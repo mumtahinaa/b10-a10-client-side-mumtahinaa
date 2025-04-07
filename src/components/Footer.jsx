@@ -31,10 +31,11 @@ const Footer = () => {
               <Link to="/" className="hover:text-[#00A8E8]">Home</Link>
             </li>
             <li>
-              <Link to="/about" className="hover:text-[#00A8E8]">About</Link>
+              <Link to="/movies" className="hover:text-[#00A8E8]">All Movies</Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-[#00A8E8]">Contact</Link>
+              <Link to="/tv-shows" className="hover:text-[#00A8E8]">Tv Shows
+              </Link>
             </li>
             <li>
               <Link to="/privacy-policy" className="hover:text-[#00A8E8]">Privacy Policy</Link>
@@ -62,13 +63,13 @@ const Footer = () => {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
               <FaFacebook className="text-2xl text-[#00A8E8] hover:text-[#9B5DE5]" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/afrin_mumtahina" target="_blank" rel="noopener noreferrer">
               <FaTwitter className="text-2xl text-[#00A8E8] hover:text-[#9B5DE5]" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="" target="_blank" rel="noopener noreferrer">
               <FaInstagram className="text-2xl text-[#00A8E8] hover:text-[#9B5DE5]" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/mumtahina-afrin/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="text-2xl text-[#00A8E8] hover:text-[#9B5DE5]" />
             </a>
           </div>

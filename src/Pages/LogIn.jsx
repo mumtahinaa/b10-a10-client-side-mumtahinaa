@@ -16,13 +16,13 @@ const LogIn = () => {
       e.preventDefault();
       const email = e.target.email.value;
       const  password = e.target.password.value;
-      // console.log(email,password)
+      
       setError('');
      
       signIn(email,password)
       .then(result=>{
         const userInfo = result.user;
-        console.log(userInfo)
+        
         setUser(userInfo);
         navigate(location?.state ? location?.state : '/');
       })
@@ -46,7 +46,7 @@ const LogIn = () => {
       googleSignIn()
       .then(result=>{
         const clientInfo = result.user;
-        console.log(clientInfo)
+        
         setUser(clientInfo)
         navigate(location?.state ? location?.state : '/');
       });

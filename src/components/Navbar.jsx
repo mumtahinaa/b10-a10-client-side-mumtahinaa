@@ -13,7 +13,7 @@ const Navbar = () => {
 //     document.documentElement.setAttribute("data-theme", newTheme);
 //   };
 const {user,logOut} = useContext(AuthContext);
-console.log(user)
+
 
   return (
     <div className="mx-auto w-full bg-black ">

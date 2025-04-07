@@ -30,7 +30,7 @@ const {register,setUser,user,googleSignIn}= useContext(AuthContext)
     const  password = e.target.password.value;
     const name = e.target.name.value;
     const photo =e.target.photo.value;
-    console.log(name,email,password)
+    
 
 
     setError("");
@@ -51,14 +51,14 @@ const {register,setUser,user,googleSignIn}= useContext(AuthContext)
     register(email,password)
     .then(result=>{
       const infoClient = result.user
-      console.log(infoClient)
+      
       setUser(infoClient);
       navigate('/');
     })
     .catch((err)=>{
       const errMessage = err.message;
       const errCode = err.code;
-      console.log("error code:",errCode,"err message:",errMessage)
+      // console.log("error code:",errCode,"err message:",errMessage)
       setError(errCode);
     });
 
@@ -83,7 +83,7 @@ const {register,setUser,user,googleSignIn}= useContext(AuthContext)
     googleSignIn()
     .then(result=>{
       const clientInfo = result.user;
-      console.log(clientInfo)
+    
       setUser(clientInfo)
       navigate(location?.state ? location?.state : '/');
 

@@ -16,11 +16,11 @@ const Banner2 = () => {
     const[movies,setMovies]= useState([]);
 
    useEffect(()=>{
-    fetch('http://localhost:4000/banner')
+    fetch('https://b10-a10-server-side-mumtahinaa.vercel.app/banner')
     .then(res=>res.json())
     .then(data=>
        {
-        console.log(data)
+        
         setMovies(data) 
        })
    },[]);
