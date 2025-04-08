@@ -11,7 +11,7 @@ export default {
         pacifico: ["Pacifico", "cursive"],
       },
       backgroundImage:{
-        'footer-img':"url('./src/assets/Rect Light.svg')"
+        'footer-img':"url('/assets/RectLight.svg')"
       }
     },
   },
