@@ -38,7 +38,9 @@ pagination={{
   clickable: true,
 }}
 navigation={true}
-loop={true}
+loop={movies.length > 1}
+slidesPerView={1} 
+  slidesPerGroup={1}
 effect='fade'
 modules={[Autoplay, Pagination, Navigation]}
 className="mySwiper"
