@@ -1,7 +1,7 @@
 # CineNest - Your Ultimate Movie Portal
 
 ## Live URL
-Visit the live project: [CineNest](https://eco-asia.web.app/)
+Visit the live project: [CineNest](https://movie-portal-7e5dc.web.app/)
 
 ## Project Overview
 
